@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './containers/Home';
-import Counter from './containers/Counter';
-import SuperMarket from './containers/SuperMarket';
+import Home from './containers/home';
+import Counter from './containers/counter';
+import SuperMarket from './containers/super_market';
 import DevTools from 'mobx-react-devtools';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
       <Router>
         <div>
           <Link to={`/`}>Home</Link>
-          <Link to={`/SuperMarket/1000`}>Super Market</Link>
-          <Link to={`/Counter/2000`}>Counter</Link>
+          <Link to={`/SuperMarket/1000?items=2`}>Super Market</Link>
+          <Link to={`/Counter/2000?count=10`}>Counter</Link>
 
           {process.env.NODE_ENV === 'development' && <DevTools />}
 

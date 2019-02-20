@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'mobx-react'; // MobX 에서 사용하는 Provider
+import './index.scss';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import registerServiceWorker from './registerServiceWorker';
+import RootStore from './stores';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = new RootStore(); // *** 루트 스토어 생성
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+  <Provider {...root}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+// registerServiceWorker();

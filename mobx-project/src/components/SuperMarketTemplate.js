@@ -1,11 +1,11 @@
 import React from 'react';
 import './SuperMarketTemplate.scss';
 
-const SuperMarketTemplate = ({ items, basket, total }) => {
+const SuperMarketTemplate = ({ items, basket, total, match }) => {
   return (
     <div className="SuperMarketTemplate">
       <div className="items-wrapper">
-        <h2>상품</h2>
+        <h2>{match.params.id}의 상품</h2>
         {items}
       </div>
       <div className="basket-wrapper">

@@ -9,12 +9,13 @@ import { observer, inject } from 'mobx-react';
 @observer
 class Counter extends Component {
     render() {
-        const { number, increase, decrease } = this.props;
+        const { number, increase, decrease, match } = this.props;
         return (
             <div>
-            <h1>{number}</h1>
-            <button onClick={increase}>+1</button>
-            <button onClick={decrease}>-1</button>
+                <h1>{match.params.id}의 숫자</h1>
+                <h2>{number}</h2>
+                <button onClick={increase}>+1</button>
+                <button onClick={decrease}>-1</button>
             </div>
         );
     }

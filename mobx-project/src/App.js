@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Home from './containers/home';
-import Counter from './containers/counter';
-import SuperMarket from './containers/super_market';
+import Home from './pages/home';
+import Counter from './pages/counter';
+import SuperMarket from './pages/super_market';
 import DevTools from 'mobx-react-devtools';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 class App extends Component {

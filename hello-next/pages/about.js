@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Layout from '../components/Layout';
 
 const About = () => (
     <Layout>
@@ -9,7 +9,7 @@ const About = () => (
                 }
             `}
         </style>
-        <h2>안녕하세요 저는 Velopert 입니다.</h2>
+        <h2>안녕하세요~</h2>
     </Layout>
 )
 

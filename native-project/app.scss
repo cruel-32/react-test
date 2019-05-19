@@ -1,0 +1,21 @@
+$red:red;
+$blue:blue;
+
+.container {
+    flex: 2;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    
+}
+.red {
+    color: $red;
+} 
+.bigBlue {
+    color: $blue;
+    font-weight: bold;
+    font-size: 30;
+} 
+.show {
+    display:none;
+}

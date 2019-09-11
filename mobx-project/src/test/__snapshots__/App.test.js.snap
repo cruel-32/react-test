@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App은 잘 되고 있습니다 상태값은 없습니다 1`] = `null`;
+
+exports[`App은 잘 되고 있습니다 생성과 삭제 이상없이 되고 있습니다. 1`] = `ReactWrapper {}`;
+
+exports[`App은 잘 되고 있습니다 생성과 삭제 이상없이 되고 있습니다. 2`] = `ReactWrapper {}`;

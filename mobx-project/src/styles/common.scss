@@ -1,0 +1,63 @@
+@import 'import/variables';
+@import 'import/mixin';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  a {
+    display:inline-block;
+    margin-right:10px;
+  }
+  @include mq(xs){
+    width:getSize(xs);
+    a {
+      color:$textBold
+    }
+  }
+  @include mq(sm){
+    width:getSize(sm);
+    a {
+      color:$text-hover
+    }
+  }
+  @include mq(md){
+    width:getSize(md);
+    a {
+      color:$text-hover
+    }
+  }
+  @include mq(lg){
+    width:getSize(lg);
+    a {
+      color:$text
+    }
+  }
+  @include mq(xl){
+    width:getSize(xl);
+    a {
+      color:$title
+    }
+  }
+  @include mq(xxl){
+    width:getSize(xxl);
+    a {
+      color:$primary
+    }
+  }
+}
+
+button {
+  color:$textBold;
+}

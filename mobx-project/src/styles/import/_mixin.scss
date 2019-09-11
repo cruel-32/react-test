@@ -1,0 +1,11 @@
+@import 'import/variables.scss';
+
+@function getSize($size) {
+    @return map-get($breakpoints, $size);
+}
+
+@mixin mq($size) {
+    @media screen and (min-width: getSize($size)) {
+        @content;
+    }
+}

@@ -11,7 +11,6 @@ const LOGIN_SUCCESS = 'account/LOGIN_SUCCESS';
 const LOGIN_FAILURE = 'account/LOGIN_FAILURE';
 
 //액션 생성함수
-export const login = createAction(LOGIN, payload => payload)
 export const logout = createAction(LOGOUT, ()=>{});
 export const inputAccount = createAction(INPUT_ACCOUNT, payload => payload);
 

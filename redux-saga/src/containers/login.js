@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login, logout, inputAccount, } from '../store/modules/account';
 
 class LoginPage extends Component {
   handleLogin = (e) => {
@@ -39,11 +38,13 @@ const mapStateToProps = ({ account:{ email, password } }) => ({
   email, password
 });
 
-//module에서 원하는 액션을 dispatch에 객체형태로 넘긴다
-const mapDispatchToProps = {
-  login,
-  logout,
-  inputAccount, 
+//module에서 원하는 액션을 dispatch로 넘긴다
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (payload) => dispatch({ type: "account/LOGIN", payload}),
+    logout: () => dispatch({ type: "account/LOGOUT"}),
+    inputAccount: payload => dispatch({ type: "account/LOGOUT", payload}),
+  };
 };
 
 export default connect(

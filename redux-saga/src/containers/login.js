@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   return {
     login: (payload) => dispatch({ type: "account/LOGIN", payload}),
     logout: () => dispatch({ type: "account/LOGOUT"}),
-    inputAccount: payload => dispatch({ type: "account/LOGOUT", payload}),
+    inputAccount: payload => dispatch({ type: "account/INPUT_ACCOUNT", payload}),
   };
 };
 

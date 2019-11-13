@@ -12,7 +12,11 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
+    "babel-plugin-react-native-classname-to-style": "^1.2.2",
+    "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
+    "babel-preset-expo": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "react-native-sass-transformer": "^1.4.0"
   },
   "private": true
 }

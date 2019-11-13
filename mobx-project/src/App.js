@@ -1,27 +1,32 @@
-import React, { Component } from 'react';
-import Home from './pages/home';
-import Counter from './pages/counter';
-import SuperMarket from './pages/super_market';
-import DevTools from 'mobx-react-devtools';
+import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Link to={`/`}>Home</Link>
-          <Link to={`/SuperMarket/1000?items=2`}>Super Market</Link>
-          <Link to={`/Counter/2000?count=10`}>Counter</Link>
+import Home from 'pages/home';
+import Event from 'pages/event';
+import Login from 'pages/login';
+import Join from 'pages/join';
+import 'styles/App.scss';
 
-          {process.env.NODE_ENV === 'development' && <DevTools />}
+// https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=korean'
+
+class App extends React.Component {
+  render(){
+    return <Router>
+      <div className="App">
+        <div>
+          <p>테스트 페이지. 코드보고 눌러도 보고 대충 감을 잡으셈들</p>
+          <Link to={`/`}>Home</Link>
+          <Link to={`/login`}>Login</Link>
+          <Link to={`/join`}>Join</Link>
+          <Link to={`/event/2000?count=10`}>Event</Link>
 
           <Route exact path="/" component={Home}/>
-          <Route exact path="/SuperMarket/:id" component={SuperMarket}/>
-          <Route exact path="/Counter/:id" component={Counter}/>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/join" component={Join} />
+          <Route path={["/event/:id", "/event"]} component={Event} />
+
         </div>
-      </Router>
-    );
+      </div>
+    </Router>
   }
 }
-
 export default App;

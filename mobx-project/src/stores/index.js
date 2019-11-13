@@ -1,10 +1,12 @@
-import CounterStore from './counter';
-import MarketStore from './market';
+import CategoryStore from './categories';
+import EventStore from './events';
+import AccountStore from './accounts';
 
 class RootStore {
   constructor() {
-    this.counter = new CounterStore(this);
-    this.market = new MarketStore(this);
+    this.categories = new CategoryStore(this);
+    this.events = new EventStore(this);
+    this.accounts = new AccountStore(this);
   }
 }
 

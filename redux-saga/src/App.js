@@ -1,27 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
+
 import 'styles/App.scss';
 import LoginPage from 'containers/login'
+import AccountDetail from 'containers/accountDetail'
+import AccountList from 'containers/accountList'
 
 function App() {
+  const [mode, setMode] = useState('on');
+
   return (
-    <div className="App">
-      <LoginPage></LoginPage>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <div>
+          <Link to="/">home</Link>&nbsp;&nbsp;
+          <Link to={`/account/${'tester'}`}>AccountDetail</Link>&nbsp;&nbsp;
+          <Link to="/account?sort=name">list</Link>&nbsp;&nbsp;
+        </div>
+        <Route exact path='/'>
+          <LoginPage source={mode} />
+        </Route>
+        <Route exact path='/account/:_id'>
+          <AccountDetail source={mode}/>
+        </Route>
+        <Route exact path='/account'>
+          <AccountList source={mode}></AccountList>
+        </Route>
+        <button onClick={()=>{setMode('on')}}>set on</button>
+        <button onClick={()=>{setMode('off')}}>set off</button>
+        
+      </div>
+    </BrowserRouter>
   );
 }
 

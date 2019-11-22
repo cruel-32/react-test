@@ -6,7 +6,8 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import rootReducer, { rootSaga } from 'store/modules'
+import rootReducer from 'store/reducers'
+import rootSaga from 'store/actions'
 
 import App from './App';
 import 'styles/index.scss';

@@ -5,12 +5,12 @@ interface Account {
     _id:string;
     email:string;
     username:string;
-    authentication:'Y'|'N';
+    authentication:string;
     birth?:Date;
     thumbnail?:string;
     name?:string;
     phone?:number;
-    deleted:'Y'|'N';
+    deleted:string;
     owns?:string[];
     managements?:string[];
     togethers?:string[];

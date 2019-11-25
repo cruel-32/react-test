@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from "react-router-dom";
 import { parse } from 'query-string'
 
-import { GET_ACCOUNTS } from 'store/actions/account'
+import { GET_ACCOUNTS } from 'store/account/action'
 
 const AccountList = (props:any) => {
   console.log('props : ', props);

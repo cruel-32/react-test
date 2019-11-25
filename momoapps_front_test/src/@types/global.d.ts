@@ -7,3 +7,5 @@ interface IAction<T> {
     type:string;
     payload:T|null|undefined;
 }
+
+type Action = string;

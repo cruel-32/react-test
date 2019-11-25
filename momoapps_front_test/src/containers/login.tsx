@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 import { useDispatch, useSelector, } from 'react-redux';
-import { LOGIN_ASYNC, LOGOUT_ASYNC} from 'store/actions/account'
+import { LOGIN_ASYNC, LOGOUT_ASYNC} from 'store/account/action'
 import { Link, } from "react-router-dom";
 import { TextField, Button } from '@material-ui/core';
 import { loginSchema  } from 'lib/validation/account'
@@ -24,11 +24,16 @@ const LoginPage = (props:any) => {
   }
   
   const handleLogin = (payload:any) => {
-    dispatch({ type: LOGIN_ASYNC, payload})
+    dispatch({
+      type: LOGIN_ASYNC,
+      payload
+    })
   }
 
   const handleLogout = () => {
-    dispatch({ type: LOGOUT_ASYNC })
+    dispatch({
+      type: LOGOUT_ASYNC
+    })
   }
   
   useEffect(()=>{

@@ -8,8 +8,8 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import rootReducer from 'store/reducers'
-import rootSaga from 'store/actions'
+import { rootSaga, rootReducer } from 'store/index'
+
 import { Button } from '@material-ui/core';
 
 const sagaMiddleware = createSagaMiddleware()

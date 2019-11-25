@@ -6,8 +6,7 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import rootReducer from 'store/reducers'
-import rootSaga from 'store/actions'
+import { rootSaga, rootReducer } from 'store/index'
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -17,11 +16,6 @@ const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
-
-// ReactDOM.render(
-//     (<div>hi</div>)
-//     , document.getElementById('root')
-// );
 
 ReactDOM.render(
     <Provider store={store}>

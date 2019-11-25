@@ -35,9 +35,7 @@ function* logoutAsync(action:any) {
     const payload = {
         _id: '',
         username: '',
-        authentication: 'N',
         thumbnail: '',
-        deleted: 'N',
         message: '',
     }
     

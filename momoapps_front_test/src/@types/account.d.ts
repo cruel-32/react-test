@@ -2,12 +2,12 @@ interface IAccount {
     _id:string;
     email?:string;
     username:string;
-    authentication:string;
+    authentication?:string;
     birth?:Date;
     thumbnail:string;
     name?:string;
     phone?:number;
-    deleted:string;
+    deleted?:string;
     owns?:IAccount['_id'][];
     managements?:IAccount['_id'][];
     togethers?:ITogether['_id'][];

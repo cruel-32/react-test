@@ -9,17 +9,17 @@ import { Formik } from "formik";
 const LoginPage = (props:any) => {
   const dispatch = useDispatch();
 
-  const [ count, setCount ] = useState(0);
-  const [ email ] = useState('');
-  const [ password ] = useState('');
+  const [ count, setCount ] = useState<number>(0);
+  const [ email ] = useState<IAccount['email']>('');
+  const [ password ] = useState<string>('');
 
-  const account = useSelector((store:any) => store.account)
+  const account:IAccount = useSelector((store:any) => store.account)
 
-  const countUp = (e:any) => {
+  const countUp = () => {
     setCount(count+1);
   }
   
-  const countDown = (e:any) => {
+  const countDown = () => {
     setCount(count-1);
   }
   

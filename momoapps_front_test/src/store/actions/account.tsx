@@ -16,40 +16,40 @@ export const SET_ACCOUNTS = 'account/SET_ACCOUNTS';
 //비동기 미들웨어 처리. 액션이 호출되면 리듀서까지 도달하기 전 해당 함수를 먼저 거쳐간다.
 function* loginAsync(action:any) {
     try {
-        const { data } = yield axios.post(`http://localhost:12354/api/accounts/auth`, action.payload);
+        const { data } : { data?:IAccount } = yield axios.post(`http://localhost:12354/api/accounts/auth`, action.payload);
 
-        localStorage.setItem('account', JSON.stringify(data));
-        
-        yield put({ type: SET_ACCOUNT, payload: data });
+        if(data){
+            localStorage.setItem('account', JSON.stringify(data));
+            put({
+                type: SET_ACCOUNT,
+                payload: data
+            });
+        }
     } catch (e) {
         localStorage.removeItem('account')
-        yield put({ type: RESET_ACCOUNT });
+        put({ type: RESET_ACCOUNT });
     }
 
 }
 function* logoutAsync(action:any) {
     const payload = {
-        email: null,
-        username: null,
-        authentication: null,
-        birth: null,
-        thumbnail: null,
-        name: null,
-        phone: null,
-        deleted: null,
-        owns: null,
-        managements: null,
-        togethers: null,
-        message: null,
-        _id: null,
+        _id: '',
+        username: '',
+        authentication: 'N',
+        thumbnail: '',
+        deleted: 'N',
+        message: '',
     }
     
     try {
-        const { data, error } = yield axios.delete(`http://localhost:12354/api/accounts/auth`);
+        const { data, error } : { data?:IAccount, error?:Error } = yield axios.delete(`http://localhost:12354/api/accounts/auth`);
         
         if(data){
             localStorage.removeItem('account')
-            yield put({ type: RESET_ACCOUNT, payload});
+            put({
+                type: RESET_ACCOUNT,
+                payload
+            });
         } else {
             throw error            
         }
@@ -60,10 +60,13 @@ function* logoutAsync(action:any) {
 
 function* getAccounts(){
     try {
-        const { data, error } = yield axios.get(`http://localhost:12354/api/accounts`);
+        const { data, error } : { data?:IAccount[], error?:Error }  = yield axios.get(`http://localhost:12354/api/accounts`);
         
         if(data){
-            yield put({ type: SET_ACCOUNTS, data });
+            put({
+                type: SET_ACCOUNTS,
+                data
+            });
         } else {
             throw error            
         }

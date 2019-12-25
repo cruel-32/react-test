@@ -1,19 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Nav from '../../components/nav'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const Sub = () => {
+const StaticSub = () => {
   const [ toggleTest, setToggle ] = useState(false)
   const router = useRouter()
+  const { pid } = router.query
 
-  console.log('router : ', router)
+  console.log('StaticSub pid : ', pid)
+
+  if(process){
+    console.log('StaticSub process : ', process.env.NODE_ENV)
+  }
+
+  useEffect(()=>{
+    console.log('StaticSub 초기 렌더링')
+    return ()=>{
+      console.log('StaticSub ended')
+    }
+  },[toggleTest, pid])
+  
 
   return (
     <div>
       <Head>
-        <title>Sub</title>
+        <title>StaticSub</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -51,6 +64,7 @@ const Sub = () => {
           <Link href="/">
             <a>메인</a>
           </Link>
+
 
         </div>
 
@@ -106,4 +120,4 @@ const Sub = () => {
   )
 }
 
-export default Sub
+export default StaticSub

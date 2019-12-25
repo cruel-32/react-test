@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Nav from '../../components/nav'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const Home = () => {
+const DinamicSub = () => {
   const [ toggleTest, setToggle ] = useState(false)
   const router = useRouter()
-  const { pid } = router.query
+  const { user, pid } = router.query
 
-  console.log('Home pid : ', pid)
+  console.log('DinamicSub user : ', user)
+  console.log('DinamicSub pid : ', pid)
 
   if(process){
-    console.log('Home process : ', process.env.NODE_ENV)
+    console.log('DinamicSub process : ', process.env.NODE_ENV)
   }
 
   useEffect(()=>{
-    console.log('Home 초기 렌더링')
+    console.log('DinamicSub 초기 렌더링')
     return ()=>{
-      console.log('Home ended')
+      console.log('DinamicSub ended')
     }
-  },[toggleTest, pid])
-  
+  },[toggleTest, user])
+
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>DinamicSub</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -60,14 +61,9 @@ const Home = () => {
           
           <input type='text' disabled={toggleTest} />
 
-          <Link href="/sub">
-            <a>정적 서브</a>
+          <Link href="/">
+            <a>메인</a>
           </Link>
-          
-          <Link href={`/dynamic/[pid]?user=tester`} as={`/dynamic/10?user=tester`}>
-            <a>동적 서브</a>
-          </Link>
-
 
         </div>
 
@@ -123,4 +119,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default DinamicSub

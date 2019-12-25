@@ -1,20 +1,19 @@
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import Nav from '../../components/nav'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const Home = () => {
+const Sub = () => {
   const [ toggleTest, setToggle ] = useState(false)
   const router = useRouter()
-  const { pid } = router.query
 
-  console.log('pid : ', pid)
+  console.log('router : ', router)
 
   return (
     <div>
       <Head>
-        <title>Home</title>
+        <title>Sub</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -49,10 +48,9 @@ const Home = () => {
           
           <input type='text' disabled={toggleTest} />
 
-          <Link href="/sub/[pid]?a=b" as="/sub/test?a=b">
-            <a>서브</a>
+          <Link href="/">
+            <a>메인</a>
           </Link>
-
 
         </div>
 
@@ -108,4 +106,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Sub

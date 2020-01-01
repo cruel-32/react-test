@@ -3,15 +3,18 @@ import React from 'react'
 import withReduxStore from '../lib/with-redux-store'
 import { Provider } from 'react-redux'
 
-class MyApp extends App {
-  render() {
-    const { Component, pageProps, reduxStore } = this.props
-    return (
-      <Provider store={reduxStore}>
-        <Component {...pageProps} />
-      </Provider>
-    )
-  }
+const MyApp = props => {
+  const { Component, pageProps, reduxStore } = props
+
+  console.log('Component : ', Component)
+  console.log('pageProps : ', pageProps)
+  console.log('reduxStore : ', reduxStore)
+
+  return (
+    <Provider store={reduxStore}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
 
 export default withReduxStore(MyApp)

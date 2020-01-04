@@ -2,10 +2,17 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 
+const dummyText = 'abadfwqerqwerrwqerwer'
+const dummy = []
+for(let i=0; i<100000; i++){
+  dummy.push(dummyText)
+}
+
 const exampleInitialState = {
   lastUpdate: 0,
   light: false,
   count: 0,
+  dummy
 }
 
 export const actionTypes = {
@@ -13,6 +20,11 @@ export const actionTypes = {
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT',
   RESET: 'RESET',
+}
+
+export const dummyActionTypes = {
+  FREE: 'FREE',
+  INIT: 'INIT',
 }
 
 // REDUCERS
@@ -34,6 +46,14 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.RESET:
       return Object.assign({}, state, {
         count: exampleInitialState.count,
+      })
+    case dummyActionTypes.FREE:
+      return Object.assign({}, state, {
+        dummy : null,
+      })
+    case dummyActionTypes.INIT:
+      return Object.assign({}, state, {
+        dummy
       })
     default:
       return state
@@ -61,6 +81,15 @@ export const decrementCount = () => {
 
 export const resetCount = () => {
   return { type: actionTypes.RESET }
+}
+
+
+export const dummyFree = () => {
+  return { type: dummyActionTypes.FREE }
+}
+
+export const dummyInit = () => {
+  return { type: dummyActionTypes.INIT }
 }
 
 export function initializeStore(initialState = exampleInitialState) {

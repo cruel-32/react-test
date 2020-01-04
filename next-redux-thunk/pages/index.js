@@ -1,33 +1,8 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import Link from 'next/link'
-import { startClock, serverRenderClock } from '../store'
+import { startClock, serverRenderClock, dummyFree, dummyInit} from '../store'
 import Examples from '../components/examples'
-
-// console.log('Examples : ', Examples)
-
-// class Index extends React.Component {
-//   static getInitialProps({ reduxStore, req }) {
-//     const isServer = !!req
-//     reduxStore.dispatch(serverRenderClock(isServer))
-
-//     return {}
-//   }
-
-//   componentDidMount() {
-//     const { dispatch } = this.props
-//     this.timer = startClock(dispatch)
-//   }
-
-//   componentWillUnmount() {
-//     clearInterval(this.timer)
-//   }
-
-//   render() {
-//     return <Examples />
-//   }
-// }
-
 
 const Index = props => {
   console.log('props : ', props)
@@ -39,7 +14,7 @@ const Index = props => {
     timer = startClock(dispatch)
     return ()=>{
       console.log('뒷정리')
-    }
+    } 
   },[timer])
 
 
@@ -50,6 +25,8 @@ const Index = props => {
         <Link href="/useMemo"><a>useMemo</a></Link>
       </menu>
       <Examples />
+      <button onClick={dummyFree}>dummyFree</button>
+      <button onClick={dummyInit}>dummyInit</button>
     </div>
   )
 }

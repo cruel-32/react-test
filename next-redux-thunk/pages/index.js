@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { startClock, serverRenderClock } from '~/store'
-import Examples from '~/components/examples'
+import Link from 'next/link'
+import { startClock, serverRenderClock } from '../store'
+import Examples from '../components/examples'
 
 // console.log('Examples : ', Examples)
 
@@ -43,7 +44,11 @@ const Index = props => {
 
 
   return (
-    <Examples />
+    <div>
+      <Link href="/sub"><a>sub</a></Link>
+      <Link href="/sub2"><a>sub2</a></Link>
+      <Examples />
+    </div>
   )
 }
 

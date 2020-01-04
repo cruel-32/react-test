@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { incrementCount, decrementCount, resetCount } from '~/store'
+import { incrementCount, decrementCount, resetCount } from '../store'
 
 export default () => {
   const count = useSelector(state => state.count)

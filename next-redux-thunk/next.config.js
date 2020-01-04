@@ -6,7 +6,7 @@ module.exports = {
   webpack(config, options) {
     config.resolve = {
       alias: {
-        '~/': path.resolve(__dirname)
+        '../': path.resolve(__dirname)
       },
       ...config.resolve
     }

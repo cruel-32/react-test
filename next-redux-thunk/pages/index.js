@@ -45,8 +45,10 @@ const Index = props => {
 
   return (
     <div>
-      <Link href="/sub"><a>sub</a></Link>
-      <Link href="/sub2"><a>sub2</a></Link>
+      <menu>
+        <Link href="/useReducer"><a>useReducer</a></Link>
+        <Link href="/useMemo"><a>useMemo</a></Link>
+      </menu>
       <Examples />
     </div>
   )

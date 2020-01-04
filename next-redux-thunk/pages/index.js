@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { startClock, serverRenderClock } from '../store'
-import Examples from '../components/examples'
+import { startClock, serverRenderClock } from '~/store'
+import Examples from '~/components/examples'
+
+// console.log('Examples : ', Examples)
 
 // class Index extends React.Component {
 //   static getInitialProps({ reduxStore, req }) {

@@ -3,37 +3,65 @@ const defaultScheme = {
     "type" : "string",
     "required" : false,
 }
+const defaultDateFormat = 'YYYY-MM-DD'
+// const defaultDateTimeFormat = 'YYYY-MM-DD HHmmss'
 
-const setValidatorProp = (scheme, value, validator=Joi) => {
-    if(scheme == 'type'){
-        return validator[value]()
-    } else if(scheme == 'required'){
-        if(value !== false){
-            return validator.required()
-        } else {
-            return validator.allow('')
-        }
-    } else {
-        return typeof validator[scheme] == 'function' ? validator[scheme](value) : validator
+export const createPropValidator = (propScheme) => {
+    let validator = Joi;
+    const Schema = {
+        ...defaultScheme,
+        ...propScheme,
     }
-}
-
-//property 1개를 검증
-export const getPropValidator = propScheme => {
-    const Schema = Object.assign({}, defaultScheme, propScheme)
-    let validator;
-    Object.keys(Schema).forEach(scheme=> validator = setValidatorProp(scheme, Schema[scheme], validator))
+    
+    Object.keys(Schema).forEach(scheme=> {
+        const value = Schema[scheme]
+        if(scheme == 'type'){
+            if(value == 'date'){
+                validator = validator.date().format(Schema['format'] || defaultDateFormat).utc()
+            } else {
+                validator = validator[value]()
+            }
+        } else if(scheme == 'required'){
+            if(value !== false){
+                validator = validator.required()
+            } else {
+                validator = validator.allow('').allow(null)
+            }
+        } else if(scheme == 'children'){
+            if(typeof value === 'object'){
+                if(Object.keys(value).includes('type')){
+                    validator = validator.items(createPropValidator(value))
+                } else {
+                    validator = validator.items(createValidator(value))
+                }
+            }
+        } else if(scheme == 'props'){
+            validator = createValidator(value)
+            if(typeof value === 'object'){
+                if(Object.keys(value).includes('type')){
+                    validator = createPropValidator(value)
+                } else {
+                    validator = createValidator(value)
+                }
+            }
+        } else if(scheme == 'ref'){
+            validator = validator.valid(Joi.ref(value))
+        } else {
+            validator = typeof validator[scheme] == 'function' ?
+                    validator[scheme](value)
+                :
+                    validator
+        }
+    })
     return validator
 }
 
-//object 검증
-export const getObjectValidator = SchemeObj => {
+//validator 생성
+export const createValidator = SchemeObj => {
     const schemeSet = {}
 
     Object.keys(SchemeObj).forEach(propScheme=>{
-        let validator;
-        Object.keys(Schema).forEach(scheme=> validator = setValidatorProp(scheme, Schema[scheme], validator))
-        schemeSet[propScheme] = validator
+        schemeSet[propScheme] = createPropValidator(SchemeObj[propScheme])
     })
 
     return Joi.object(schemeSet)
